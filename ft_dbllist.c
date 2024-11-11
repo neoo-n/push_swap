@@ -1,13 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_dbllist.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dvauthey <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*   By: dvauthey <dvauthey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/08 17:57:25 by dvauthey          #+#    #+#             */
-/*   Updated: 2024/11/08 17:59:00 by dvauthey         ###   ########.fr       */
+/*   Created: 2024/11/11 18:40:36 by dvauthey          #+#    #+#             */
+/*   Updated: 2024/11/11 18:41:21 by dvauthey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//void ft_push_swap(int *a)
+#include "push_swap.h"
+
+int	ft_dbllstsize(t_dbllist *lst)
+{
+	int		count;
+	t_list	*next_el;
+
+	count = 0;
+	next_el = lst;
+	while (next_el != NULL)
+	{
+		next_el = next_el->next;
+		count++;
+	}
+	return (count);
+}

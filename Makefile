@@ -1,20 +1,28 @@
 CC = cc
 FLAGS = -Wall -Wextra -Werror 
-SRC = 
+SRC = push_swap.c ps_ops.c main.c
+#OBJDIR = obj
 OBJ = ${SRC:.c=.o}
 NAME = push_swap
-RM = rm -f
+RM = rm
 
-all : ${NAME}
 
-${NAME} : ${OBJ}
-	${AR} ${NAME} ${OBJ}
+all : ${NAME} 
+
+${NAME} : ${OBJ} ${LIBFT}
+	${AR} ${NAME} ${OBJ} ${LIBFT}
 
 .o : .c
 	${CC} ${CFLAGS} -c $<
 
+#${OBJDIR} :
+#	mkdir -p ${OBJDIR}
+
+${LIBFT} :
+	${MAKE} -C ./libft/src
+
 clean :
-	${RM} ${OBJ}
+	${RM} -f ${OBJ}
 
 fclean : 	clean
 	${RM} ${NAME}
