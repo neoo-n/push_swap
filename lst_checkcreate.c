@@ -1,30 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   lst_checkcreate.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dvauthey <dvauthey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/08 17:59:18 by dvauthey          #+#    #+#             */
-/*   Updated: 2024/11/12 16:12:47 by dvauthey         ###   ########.fr       */
+/*   Created: 2024/11/12 14:11:43 by dvauthey          #+#    #+#             */
+/*   Updated: 2024/11/12 16:17:33 by dvauthey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char **argv)
-{
-	t_dbllist	*a;
+//t_dbllist	*check_arg2(char *a)
+//{
 
-	a = NULL;
-	if (argc < 2)
-		return (0);
-//	if (argc == 2)
-//	
-	else
+//}
+
+t_dbllist	*check_argm2(int len, char **argv, t_dbllist **a)
+{
+	int			i;
+	t_dbllist	*new_el;
+
+	i = 1;
+	new_el = NULL;
+	while (i <= len)
 	{
-		check_argm2(argc - 1, argv, &a);
+		new_el = ft_dbllstnew(ft_atoi(argv[i]));
+		ft_dbllstadd_back(a, new_el);
+		i++;
 	}
-	ft_putdbllst(a);
-	return (0);
+	return (*a);
 }
