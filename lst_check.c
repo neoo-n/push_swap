@@ -1,25 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   lst_ckeck.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dvauthey <dvauthey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/08 17:59:18 by dvauthey          #+#    #+#             */
-/*   Updated: 2024/11/13 11:07:11 by dvauthey         ###   ########.fr       */
+/*   Created: 2024/11/13 11:35:00 by dvauthey          #+#    #+#             */
+/*   Updated: 2024/11/13 11:49:01 by dvauthey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char **argv)
+void	fct_notvalid()
 {
-	t_dbllist	*a;
+	ft_printf("Error\n");
+	exit(1);
+}
 
-	a = NULL;
-	if (argc < 2)
-		return (0);
-	check_argm2(argc - 1, argv, &a);
-	ft_putdbllst(a);
-	return (0);
+void	fct_isnumber(char *s)
+{
+	int		i;
+
+	i = 0;
+	if (!s)
+		fct_notvalid();
+	if (s[0] == '-' || s[0] == '+')
+		i++;
+	while (s[i])
+	{
+		if (!ft_isdigit(s[i]))
+			fct_notvalid();
+		i++;
+	}
+	if (ft_atol(s) > 2147384647 || ft_atol(s) < -2147483648)
+		fct_notvalid();
 }
