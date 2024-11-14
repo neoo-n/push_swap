@@ -6,7 +6,7 @@
 /*   By: dvauthey <dvauthey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:11:43 by dvauthey          #+#    #+#             */
-/*   Updated: 2024/11/13 11:37:26 by dvauthey         ###   ########.fr       */
+/*   Updated: 2024/11/13 13:38:49 by dvauthey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,20 @@ t_dbllist	*check_arg2(char *av, t_dbllist **a)
 
 	i = 0;
 	res = ft_split(av, ' ');
+	if (!res)
+		notvalid();
 	while (res && res[i])
 	{
-		fct_isnumber(res[i]);
+		isnumber(res[i]);
 		new_el = ft_dbllstnew(ft_atoi(res[i]));
+		is_alreadyin(*a, new_el->number);
 		ft_dbllstadd_back(a, new_el);
 		i++;
 	}
 	return (*a);
 }
 
-t_dbllist	*check_argm2(int len, char **argv, t_dbllist **a)
+void	check_argm2(int len, char **argv, t_dbllist **a)
 {
 	int			i;
 	t_dbllist	*new_el;
@@ -43,11 +46,11 @@ t_dbllist	*check_argm2(int len, char **argv, t_dbllist **a)
 			*a = check_arg2(argv[i], a);
 		else
 		{
-			fct_isnumber(argv[i]);
+			isnumber(argv[i]);
 			new_el = ft_dbllstnew(ft_atoi(argv[i]));
+			is_alreadyin(*a, new_el->number);
 			ft_dbllstadd_back(a, new_el);
 		}
 		i++;
 	}
-	return (*a);
 }

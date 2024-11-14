@@ -6,7 +6,7 @@
 /*   By: dvauthey <dvauthey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 18:40:36 by dvauthey          #+#    #+#             */
-/*   Updated: 2024/11/12 13:50:52 by dvauthey         ###   ########.fr       */
+/*   Updated: 2024/11/14 10:57:05 by dvauthey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_dbllstsize(t_dbllist *lst)
 {
-	int		count;
+	int			count;
 	t_dbllist	*next_el;
 
 	count = 0;
@@ -54,4 +54,25 @@ void	ft_dbllstadd_back(t_dbllist **lst, t_dbllist *new)
 	while (temp->next)
 		temp = temp->next;
 	temp->next = new;
+	new->prev = temp;
+}
+
+void	ft_dbllstadd_front(t_dbllist **lst, t_dbllist *new)
+{
+	if (lst == NULL || new == NULL)
+		return ;
+	new->next = *lst;
+	(*lst)->prev = new;
+	*lst = new;
+}
+
+void	ft_dbllstdelone(t_dbllist **a)
+{
+	t_dbllist	*a_mod;
+
+	a_mod = (*a)->next;
+	(*a)->number = 0;
+	((*a)->next)->prev = NULL;
+	free(*a);
+	*a = a_mod;
 }
