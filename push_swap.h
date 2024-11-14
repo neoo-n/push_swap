@@ -6,7 +6,7 @@
 /*   By: dvauthey <dvauthey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 17:56:47 by dvauthey          #+#    #+#             */
-/*   Updated: 2024/11/14 10:55:00 by dvauthey         ###   ########.fr       */
+/*   Updated: 2024/11/14 11:35:42 by dvauthey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 typedef struct s_dbllist
 {
 	int					number;
-	int					index;
+	char				letter;
 	struct s_dbllist	*prev;
 	struct s_dbllist	*next;
 }						t_dbllist;

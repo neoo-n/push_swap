@@ -6,12 +6,13 @@
 /*   By: dvauthey <dvauthey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 17:59:18 by dvauthey          #+#    #+#             */
-/*   Updated: 2024/11/14 10:55:47 by dvauthey         ###   ########.fr       */
+/*   Updated: 2024/11/14 11:33:17 by dvauthey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+// pour 100 : 700 et pour 500 : 5500
 int	main(int argc, char **argv)
 {
 	t_dbllist	*a;
