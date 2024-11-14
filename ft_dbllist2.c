@@ -1,36 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_dbllist2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dvauthey <dvauthey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/08 17:59:18 by dvauthey          #+#    #+#             */
-/*   Updated: 2024/11/14 14:53:30 by dvauthey         ###   ########.fr       */
+/*   Created: 2024/11/14 13:20:23 by dvauthey          #+#    #+#             */
+/*   Updated: 2024/11/14 13:30:01 by dvauthey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// pour 100 : 700 et pour 500 : 5500
-// fct pour gerer les print de sa, sb etc
-int	main(int argc, char **argv)
+void		ft_dbllstdellast(t_dbllist **a)
 {
-	t_dbllist	*a;
-	
-	a = NULL;
-	if (argc < 2)
-		return (0);
-	check_argm2(argc - 1, argv, &a);
-	ft_printf("Before : \n");
-	ft_printf("a\n");
-	//ft_putdbllst(a);
-
-	ft_printf("\n");
-	fct_rab(&a);
-	ft_printf("After : \n");
-	ft_printf("a\n");
-//	ft_putdbllst(a);
-
-	return (0);
+	while (((*a)->next)->next)
+		(*a) = (*a)->next;
+	(*a)->number = 0;
+	(*a)->next = NULL;
+	free((*a)->next);
+	while ((*a)->prev)
+		(*a) = (*a)->prev;
 }
