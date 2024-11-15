@@ -6,7 +6,7 @@
 /*   By: dvauthey <dvauthey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 14:11:43 by dvauthey          #+#    #+#             */
-/*   Updated: 2024/11/13 13:38:49 by dvauthey         ###   ########.fr       */
+/*   Updated: 2024/11/15 15:46:55 by dvauthey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ t_dbllist	*check_arg2(char *av, t_dbllist **a)
 	while (res && res[i])
 	{
 		isnumber(res[i]);
+		is_alreadyin(a, ft_atoi(res[i]));
 		new_el = ft_dbllstnew(ft_atoi(res[i]));
-		is_alreadyin(*a, new_el->number);
 		ft_dbllstadd_back(a, new_el);
 		i++;
 	}
@@ -47,8 +47,8 @@ void	check_argm2(int len, char **argv, t_dbllist **a)
 		else
 		{
 			isnumber(argv[i]);
+			is_alreadyin(a, ft_atoi(argv[i]));
 			new_el = ft_dbllstnew(ft_atoi(argv[i]));
-			is_alreadyin(*a, new_el->number);
 			ft_dbllstadd_back(a, new_el);
 		}
 		i++;

@@ -6,7 +6,7 @@
 /*   By: dvauthey <dvauthey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 11:35:00 by dvauthey          #+#    #+#             */
-/*   Updated: 2024/11/15 10:00:39 by dvauthey         ###   ########.fr       */
+/*   Updated: 2024/11/15 13:51:11 by dvauthey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,17 @@ void	isnumber(char *s)
 	is_minmax(s);	
 }
 
-void	is_alreadyin(t_dbllist *a, int n)
+void	is_alreadyin(t_dbllist **a, int n)
 {
-	while (a)
+	t_dbllist	*temp;
+
+	temp = *a;
+	if (!(*a))
+		return ;
+	while (temp)
 	{
-		if (a->number == n)
+		if (temp->number == n)
 			notvalid();
-		a = a->next;
+		temp = temp->next;
 	}
 }
