@@ -6,7 +6,7 @@
 /*   By: dvauthey <dvauthey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 18:05:27 by dvauthey          #+#    #+#             */
-/*   Updated: 2024/11/14 13:32:05 by dvauthey         ###   ########.fr       */
+/*   Updated: 2024/11/15 11:29:00 by dvauthey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,16 @@ void	fct_pab(t_dbllist **a, t_dbllist **b)
 {
 	t_dbllist	*temp;
 
-	temp = ft_dbllstnew((*a)->number);
-	ft_dbllstadd_front(b, temp);
-	ft_dbllstdelfirst(a);	
+	if (!(*a))
+		return ;
+	temp = *b;
+	if (!temp)
+		*b = ft_dbllstnew((*a)->number);
+	else
+		*b = *a;
+	*a = (*a)->next;
+	(*a)->prev = NULL;
+	(*b)->next = temp;
+	if (temp)
+		((*b)->next)->prev = *b;
 }

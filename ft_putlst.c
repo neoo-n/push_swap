@@ -6,7 +6,7 @@
 /*   By: dvauthey <dvauthey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 10:26:10 by dvauthey          #+#    #+#             */
-/*   Updated: 2024/11/14 14:44:55 by dvauthey         ###   ########.fr       */
+/*   Updated: 2024/11/15 10:24:50 by dvauthey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	ft_putdbllst(t_dbllist *lst)
 	t_dbllist	*temp;
 
 	temp = lst;
+	if (!temp)
+		return ;
 	while (temp)
 	{
 		ft_printf("%i\n", temp->number);

@@ -6,7 +6,7 @@
 /*   By: dvauthey <dvauthey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 18:40:36 by dvauthey          #+#    #+#             */
-/*   Updated: 2024/11/14 14:55:14 by dvauthey         ###   ########.fr       */
+/*   Updated: 2024/11/15 11:12:25 by dvauthey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ t_dbllist	*ft_dbllstnew(int content)
 		return (NULL);
 	res->number = content;
 	res->next = NULL;
+	res->prev = NULL;
 	return (res);
 }
 
@@ -53,7 +54,6 @@ void	ft_dbllstadd_back(t_dbllist **lst, t_dbllist *new)
 	temp = *lst;
 	while (temp->next)
 		temp = temp->next;
-	ft_printf("%i\n", temp->next == NULL);
 	temp->next = new;
 	new->prev = temp;
 }
@@ -67,13 +67,14 @@ void	ft_dbllstadd_front(t_dbllist **lst, t_dbllist *new)
 	*lst = new;
 }
 
-void	ft_dbllstdelfirst(t_dbllist **a)
+t_dbllist	*ft_dbllstlast(t_dbllist **lst)
 {
-	t_dbllist	*a_mod;
+	t_dbllist	*temp;
 
-	a_mod = (*a)->next;
-	(*a)->number = 0;
-	((*a)->next)->prev = NULL;
-	free(*a);
-	*a = a_mod;
+	temp = *lst;
+	if (*lst == NULL)
+		return (NULL);
+	while (temp->next != NULL)
+		temp = temp->next;
+	return (temp);
 }

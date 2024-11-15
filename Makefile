@@ -1,6 +1,6 @@
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-SRC = push_swap.c ps_opsp.c ps_opr.c main.c ft_dbllist.c ft_dbllist2.c\
+SRC = push_swap.c ps_opsp.c ps_opr.c main.c ft_dbllist.c\
 		ft_putlst.c lst_create.c lst_check.c ft_atol.c
 #OBJDIR = obj
 OBJ = ${SRC:.c=.o}

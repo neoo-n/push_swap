@@ -3,11 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dvauthey <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*   By: dvauthey <dvauthey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 17:57:25 by dvauthey          #+#    #+#             */
-/*   Updated: 2024/11/08 17:59:00 by dvauthey         ###   ########.fr       */
+/*   Updated: 2024/11/15 11:47:00 by dvauthey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//void ft_push_swap(int *a)
+#include "push_swap.h"
+
+void ft_push_swap(t_dbllist *a)
+{
+	
+}

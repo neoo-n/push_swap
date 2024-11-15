@@ -6,7 +6,7 @@
 /*   By: dvauthey <dvauthey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 11:08:13 by dvauthey          #+#    #+#             */
-/*   Updated: 2024/11/14 14:46:12 by dvauthey         ###   ########.fr       */
+/*   Updated: 2024/11/15 11:40:39 by dvauthey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,19 @@
 
 void	fct_rab(t_dbllist **a)
 {
-	t_dbllist	*first_el;
+	int	first;
 
-	first_el = *a;
-	ft_dbllstadd_back(a, first_el);
-	ft_dbllstdelfirst(a);
+	if (!(*a))
+		return ;
+	first = (*a)->number;
+	while ((*a)->next)
+	{
+		*a = (*a)->next;
+		((*a)->prev)->number = (*a)->number;
+	}
+	(*a)->number = first;
+	while ((*a)->prev)
+		*a = (*a)->prev;
 }
 
 void	fct_rr(t_dbllist **a, t_dbllist **b)
@@ -29,13 +37,23 @@ void	fct_rr(t_dbllist **a, t_dbllist **b)
 
 void	fct_rrab(t_dbllist **a)
 {
-	t_dbllist *last_el;
-	t_dbllist *temp;
+	int	last;
 
-	temp = *a;
-	while (temp->next)
-		temp = temp->next;
-	last_el = temp;
-	ft_dbllstadd_front(a, last_el);
-	ft_dbllstdellast(a);
+	if (!(*a))
+		return ;
+	while ((*a)->next)
+		*a = (*a)->next;
+	last = (*a)->number;
+	while ((*a)->prev)
+	{
+		*a = (*a)->prev;
+		((*a)->next)->number = (*a)->number;
+	}
+	(*a)->number = last;
+}
+
+void	fct_rrr(t_dbllist **a, t_dbllist **b)
+{
+	fct_rrab(a);
+	fct_rrab(b);
 }

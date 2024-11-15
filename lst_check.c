@@ -6,7 +6,7 @@
 /*   By: dvauthey <dvauthey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 11:35:00 by dvauthey          #+#    #+#             */
-/*   Updated: 2024/11/13 13:46:25 by dvauthey         ###   ########.fr       */
+/*   Updated: 2024/11/15 10:00:39 by dvauthey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,23 @@ void	notvalid()
 {
 	ft_printf("Error\n");
 	exit(1);
+}
+
+static void	is_minmax(char *s)
+{
+	int	len;
+
+	len = ft_strlen(s);
+	if (s[0] == '-')
+	{
+		if (len > 11 || (len == 11 && ft_strncmp(s, "-2147483648", 11) > 0))
+			notvalid();
+	}
+	else
+	{
+		if (len > 10 || (len == 10 && ft_strncmp(s, "2147483647", 10) > 0))
+			notvalid();
+	}
 }
 
 void	isnumber(char *s)
@@ -33,8 +50,7 @@ void	isnumber(char *s)
 			notvalid();
 		i++;
 	}
-	if (ft_atol(s) > 2147483647 || ft_atol(s) < -2147483648)
-		notvalid();
+	is_minmax(s);	
 }
 
 void	is_alreadyin(t_dbllist *a, int n)
