@@ -1,14 +1,14 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ps_opsp.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dvauthey <dvauthey@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 18:05:27 by dvauthey          #+#    #+#             */
-/*   Updated: 2024/11/15 16:37:59 by dvauthey         ###   ########.fr       */
+/*   Updated: 2024/11/17 17:05:52 by marvin           ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #include "push_swap.h"
 
@@ -23,13 +23,27 @@ void	fct_sab(t_dbllist **a)
 	temp = ((*a)->next)->number;
 	((*a)->next)->number = (*a)->number;
 	(*a)->number = temp;
-
 }
 
 void	fct_ss(t_dbllist **a, t_dbllist **b)
 {
 	fct_sab(a);
 	fct_sab(b);
+}
+
+static void	index_right(t_dbllist **lst)
+{
+	int	i;
+
+	i = 0;
+	while ((*lst)->next)
+	{
+		(*lst)->index = i;
+		i++;
+		*lst = (*lst)->next;
+	}
+	while ((*lst)->prev)
+		*lst = (*lst)->prev;
 }
 
 void	fct_pab(t_dbllist **a, t_dbllist **b)
@@ -48,6 +62,8 @@ void	fct_pab(t_dbllist **a, t_dbllist **b)
 	(*b)->next = temp;
 	if (temp)
 		((*b)->next)->prev = *b;
+	index_right(a);
+	index_right(b);
 }
 
 void	optocall(char *op, t_dbllist **a, t_dbllist **b)

@@ -1,14 +1,14 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_dbllist.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dvauthey <dvauthey@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 18:40:36 by dvauthey          #+#    #+#             */
-/*   Updated: 2024/11/15 11:12:25 by dvauthey         ###   ########.fr       */
+/*   Updated: 2024/11/17 16:53:30 by marvin           ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #include "push_swap.h"
 
@@ -35,6 +35,7 @@ t_dbllist	*ft_dbllstnew(int content)
 	if (res == NULL)
 		return (NULL);
 	res->number = content;
+	res->index = 0;
 	res->next = NULL;
 	res->prev = NULL;
 	return (res);
@@ -55,6 +56,7 @@ void	ft_dbllstadd_back(t_dbllist **lst, t_dbllist *new)
 	while (temp->next)
 		temp = temp->next;
 	temp->next = new;
+	new->index = temp->index + 1;
 	new->prev = temp;
 }
 
@@ -64,6 +66,11 @@ void	ft_dbllstadd_front(t_dbllist **lst, t_dbllist *new)
 		return ;
 	new->next = *lst;
 	(*lst)->prev = new;
+	while ((*lst)->next)
+	{
+		(*lst)->index++;
+		*lst = (*lst)->next;
+	}
 	*lst = new;
 }
 
