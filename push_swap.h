@@ -6,7 +6,7 @@
 /*   By: dvauthey <dvauthey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 17:56:47 by dvauthey          #+#    #+#             */
-/*   Updated: 2024/11/19 11:51:47 by dvauthey         ###   ########.fr       */
+/*   Updated: 2024/11/19 17:06:41 by dvauthey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void		fct_rab(t_dbllist **a);
 void		fct_rr(t_dbllist **a, t_dbllist **b);
 void		fct_rrab(t_dbllist **a);
 void		fct_rrr(t_dbllist **a, t_dbllist **b);
+void		optocall(char *op, t_dbllist **a, t_dbllist **b);
 int			ft_dbllstsize(t_dbllist *lst);
 t_dbllist	*ft_dbllstnew(int content);
 void		ft_dbllstadd_back(t_dbllist **lst, t_dbllist *new);
