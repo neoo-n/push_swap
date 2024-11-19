@@ -1,14 +1,14 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ft_dbllist.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dvauthey <dvauthey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 18:40:36 by dvauthey          #+#    #+#             */
-/*   Updated: 2024/11/17 16:53:30 by marvin           ###   ########.fr       */
+/*   Updated: 2024/11/19 10:52:11 by dvauthey         ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
 #include "push_swap.h"
 
@@ -74,12 +74,12 @@ void	ft_dbllstadd_front(t_dbllist **lst, t_dbllist *new)
 	*lst = new;
 }
 
-t_dbllist	*ft_dbllstlast(t_dbllist **lst)
+t_dbllist	*ft_dbllstlast(t_dbllist *lst)
 {
 	t_dbllist	*temp;
 
-	temp = *lst;
-	if (*lst == NULL)
+	temp = lst;
+	if (lst == NULL)
 		return (NULL);
 	while (temp->next != NULL)
 		temp = temp->next;

@@ -6,7 +6,7 @@
 /*   By: dvauthey <dvauthey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 11:35:00 by dvauthey          #+#    #+#             */
-/*   Updated: 2024/11/15 13:51:11 by dvauthey         ###   ########.fr       */
+/*   Updated: 2024/11/19 10:10:28 by dvauthey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	notvalid()
 {
-	ft_printf("Error\n");
+	ft_putendl_fd("Error", 2);
 	exit(1);
 }
 

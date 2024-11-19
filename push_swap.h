@@ -1,14 +1,14 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: dvauthey <dvauthey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 17:56:47 by dvauthey          #+#    #+#             */
-/*   Updated: 2024/11/17 16:48:12 by marvin           ###   ########.fr       */
+/*   Updated: 2024/11/19 11:51:47 by dvauthey         ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
@@ -35,12 +35,13 @@ t_dbllist	*ft_dbllstnew(int content);
 void		ft_dbllstadd_back(t_dbllist **lst, t_dbllist *new);
 void		ft_dbllstadd_front(t_dbllist **lst, t_dbllist *new);
 void		ft_putdbllst(t_dbllist *lst);
-t_dbllist	*ft_dbllstlast(t_dbllist **lst);
+t_dbllist	*ft_dbllstlast(t_dbllist *lst);
 void		notvalid();
 void		isnumber(char *s);
 void		is_alreadyin(t_dbllist **a, int n);
 t_dbllist	*check_arg2(char *av, t_dbllist **a);
 void		check_argm2(int len, char **argv, t_dbllist **a);
+int			count_op(t_dbllist *a, t_dbllist *b, int i);
 void		ft_push_swap(t_dbllist *a);
 
 #endif
