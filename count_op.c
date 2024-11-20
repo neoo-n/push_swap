@@ -6,7 +6,7 @@
 /*   By: dvauthey <dvauthey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 14:34:35 by dvauthey          #+#    #+#             */
-/*   Updated: 2024/11/19 14:54:07 by dvauthey         ###   ########.fr       */
+/*   Updated: 2024/11/20 11:06:54 by dvauthey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int	count_rot(int len, int i)
 		return (len - i);
 }
 
-static int	placeinb(t_dbllist *b, t_dbllist *a, int i)
+int	placeinb(t_dbllist *b, t_dbllist *a, int i)
 {
 	int	right_index;
 	int	n;
@@ -45,7 +45,7 @@ static int	placeinb(t_dbllist *b, t_dbllist *a, int i)
 	return (right_index);
 }
 
-int	count_op(t_dbllist *a, t_dbllist *b, int i)
+static int	count_op(t_dbllist *a, t_dbllist *b, int indexa)
 {
 	int	lena;
 	int	lenb;
@@ -54,10 +54,10 @@ int	count_op(t_dbllist *a, t_dbllist *b, int i)
 
 	lena = ft_dbllstsize(a);
 	lenb = ft_dbllstsize(b);
-	nb_op = count_rot(lena, i);
-	indexb = placeinb(b, a, i);
-	if (((indexb <= lenb / 2) && (i > lena / 2)) 
-		|| ((indexb > lenb / 2) && (i <= lena / 2)))
+	nb_op = count_rot(lena, indexa);
+	indexb = placeinb(b, a, indexa);
+	if (((indexb <= lenb / 2) && (indexa > lena / 2)) 
+		|| ((indexb > lenb / 2) && (indexa <= lena / 2)))
 		nb_op += count_rot(lenb, indexb);
 	else
 		if(nb_op < count_rot(lenb, indexb))
@@ -65,4 +65,25 @@ int	count_op(t_dbllist *a, t_dbllist *b, int i)
 	nb_op++;
 	nb_op += count_rot(lenb + 1, indexb);
 	return (nb_op);
+}
+
+int	indextoorder(t_dbllist *a, t_dbllist *b)
+{
+	int	indexright;
+	int	nb;
+	t_dbllist	*temp;
+
+	indexright = 0;
+	nb = count_op(a, b, a->index);
+	temp = a;
+	while (temp->next)
+	{
+		temp = temp->next;
+		if (count_op(a, b, temp->index) < nb)
+		{
+			nb = count_op(a, b, temp->index);
+			indexright = temp->index;
+		}
+	}
+	return (indexright);
 }

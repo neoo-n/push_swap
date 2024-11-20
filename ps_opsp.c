@@ -6,7 +6,7 @@
 /*   By: dvauthey <dvauthey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 18:05:27 by dvauthey          #+#    #+#             */
-/*   Updated: 2024/11/19 09:54:28 by dvauthey         ###   ########.fr       */
+/*   Updated: 2024/11/20 11:43:19 by dvauthey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,29 +69,29 @@ void	fct_pab(t_dbllist **a, t_dbllist **b)
 	index_right(b);
 }
 
-void	optocall(char *op, t_dbllist **a, t_dbllist **b)
+void	optocall(char *op, char *letter, t_dbllist **a, t_dbllist **b)
 {
-	if (!ft_strncmp(op, "sa", 3))
-		fct_sab(a);
-	if (!ft_strncmp(op, "sb", 3))
-		fct_sab(b);
 	if (!ft_strncmp(op, "ss", 3))
 		fct_ss(a, b);
-	if (!ft_strncmp(op, "pa", 3))
+	else if (!ft_strncmp(op, "s", 2) && !ft_strncmp(letter, "a", 2))
+		fct_sab(a);
+	else if (!ft_strncmp(op, "s", 2) && !ft_strncmp(letter, "b", 2))
+		fct_sab(b);
+	else if (!ft_strncmp(op, "p", 2) && !ft_strncmp(letter, "a", 2))
 		fct_pab(b, a);
-	if (!ft_strncmp(op, "pb", 3))
+	else if (!ft_strncmp(op, "p", 2) && !ft_strncmp(letter, "b", 2))
 		fct_pab(a, b);
-	if (!ft_strncmp(op, "ra", 3))
-		fct_rab(a);
-	if (!ft_strncmp(op, "rb", 3))
-		fct_rab(b);
-	if (!ft_strncmp(op, "rr", 3))
-		fct_rr(a, b);
-	if (!ft_strncmp(op, "rra", 3))
-		fct_rrab(a);
-	if (!ft_strncmp(op, "rrb", 3))
-		fct_rrab(b);
-	if (!ft_strncmp(op, "rrr", 3))
+	else if (!ft_strncmp(op, "rrr", 4))
 		fct_rrr(a, b);
-	ft_printf("%c\n", op);
+	else if (!ft_strncmp(op, "rr", 3) && !ft_strncmp(letter, "a", 2))
+		fct_rrab(a);
+	else if (!ft_strncmp(op, "rr", 3) && !ft_strncmp(letter, "b", 2))
+		fct_rrab(b);
+	else if (!ft_strncmp(op, "rr", 3))
+		fct_rr(a, b);
+	else if (!ft_strncmp(op, "r", 2) && !ft_strncmp(letter, "a", 2))
+		fct_rab(a);
+	else if (!ft_strncmp(op, "r", 2) && !ft_strncmp(letter, "b", 2))
+		fct_rab(b);
+	ft_printf("%s%s\n", op, letter);
 }

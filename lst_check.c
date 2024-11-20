@@ -6,7 +6,7 @@
 /*   By: dvauthey <dvauthey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 11:35:00 by dvauthey          #+#    #+#             */
-/*   Updated: 2024/11/19 10:10:28 by dvauthey         ###   ########.fr       */
+/*   Updated: 2024/11/20 10:33:49 by dvauthey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	notvalid()
 {
 	ft_putendl_fd("Error", 2);
-	exit(1);
+	exit(EXIT_FAILURE);
 }
 
 static void	is_minmax(char *s)

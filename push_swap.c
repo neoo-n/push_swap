@@ -6,7 +6,7 @@
 /*   By: dvauthey <dvauthey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 17:57:25 by dvauthey          #+#    #+#             */
-/*   Updated: 2024/11/19 17:26:34 by dvauthey         ###   ########.fr       */
+/*   Updated: 2024/11/20 11:46:48 by dvauthey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,28 +22,7 @@ static int	is_ordered(t_dbllist *a)
 		return (0);
 }
 
-static int	indextoorder(t_dbllist *a, t_dbllist *b)
-{
-	int	indexright;
-	int	nb;
-	t_dbllist	*temp;
-
-	indexright = 0;
-	nb = count_op(a, b, a->index);
-	temp = a;
-	while (temp->next)
-	{
-		temp = temp->next;
-		if (count_op(a, b, temp->index) < nb)
-		{
-			nb = count_op(a, b, temp->index);
-			indexright = temp->index;
-		}
-	}
-	return (indexright);
-}
-
-static void	threeorder(t_dbllist **lst)
+static void	threeorder(t_dbllist **lst, char *s)
 {
 	int	c[3];
 
@@ -54,55 +33,68 @@ static void	threeorder(t_dbllist **lst)
 	{
 		if (c[1] > c[2])
 		{
-			optocall("rra", &lst, NULL);
+			optocall("rr", s, lst, NULL);
 			if (c[0] < c[2])
-				optocall("sa", &lst, NULL);
+				optocall("s", s, lst, NULL);
 		}
 	}
 	else
 	{
 		if (c[0] < c[2])
-			optocall("sa", &lst, NULL);
+			optocall("s", s, lst, NULL);
 		else
 		{
-			optocall("ra", &lst, NULL);
+			optocall("r", s, lst, NULL);
 			if (c[1] > c[2])
-				optocall("sa", &lst, NULL);
+				optocall("s", s, lst, NULL);
 		}
 	}
 }
 
-static void	to_order(t_dbllist *a, t_dbllist *b)
+static void	ordering(t_dbllist **a, t_dbllist **b, int indexa)
 {
-	int	lena;
+	int	indexb;
 
-	lena = ft_dbllstsize(a);
-	if (lena == 3)
-		threeorder(&a);
-	else
+	indexb = placeinb(*b, *a, indexa);
+	
+}
+
+static void	to_order(t_dbllist **a, t_dbllist **b)
+{
+	if (ft_dbllstsize(*a) == 2)
 	{
-		
+		optocall("s", "a", a, b);
+		return ;
 	}
+	while (ft_dbllstsize(*a) > 3)
+	{
+		ordering(a, b, indextoorder(*a, *b));
+		ft_printf("bruh\n");
+	}
+	threeorder(a, "a");
 }
 
 void	ft_push_swap(t_dbllist *a)
 {
 	int	right_index;
 	t_dbllist	*b;
-	t_dbllist	*e;
+//	t_dbllist	*e;
 
 	right_index = 0;
 	b = NULL;
-	e = ft_dbllstnew(66);
+/*	e = ft_dbllstnew(66);
 	ft_dbllstadd_back(&b, e);
 	e = ft_dbllstnew(38);
 	ft_dbllstadd_back(&b, e);
 	e = ft_dbllstnew(21);
 	ft_dbllstadd_back(&b, e);
-	ft_putdbllst(b);
+	ft_putdbllst(b);*/
+	ft_printf("\n");
 	if (is_ordered(a))
-		exit(1);
-	right_index = indextoorder(a, b);
-	ft_printf("right index : %i\n", right_index);
+		exit(EXIT_SUCCESS);
+	to_order(&a, &b);
+//	right_index = indextoorder(a, b);
+//	ft_printf("right index : %i\n", right_index);
+	ft_putdbllst(a);
 	return ;	
 }
