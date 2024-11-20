@@ -6,7 +6,7 @@
 /*   By: dvauthey <dvauthey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 18:40:36 by dvauthey          #+#    #+#             */
-/*   Updated: 2024/11/19 10:52:11 by dvauthey         ###   ########.fr       */
+/*   Updated: 2024/11/20 16:20:25 by dvauthey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,20 +60,6 @@ void	ft_dbllstadd_back(t_dbllist **lst, t_dbllist *new)
 	new->prev = temp;
 }
 
-void	ft_dbllstadd_front(t_dbllist **lst, t_dbllist *new)
-{
-	if (lst == NULL || new == NULL)
-		return ;
-	new->next = *lst;
-	(*lst)->prev = new;
-	while ((*lst)->next)
-	{
-		(*lst)->index++;
-		*lst = (*lst)->next;
-	}
-	*lst = new;
-}
-
 t_dbllist	*ft_dbllstlast(t_dbllist *lst)
 {
 	t_dbllist	*temp;
@@ -84,4 +70,19 @@ t_dbllist	*ft_dbllstlast(t_dbllist *lst)
 	while (temp->next != NULL)
 		temp = temp->next;
 	return (temp);
+}
+
+void	ft_dbllstclear(t_dbllist **lst)
+{
+	t_dbllist	*temp;
+
+	while (*lst != NULL)
+	{
+		temp = (*lst)->next;
+		(*lst)->number = 0;
+		(*lst)->prev = NULL;
+		free(*lst);
+		*lst = temp;
+	}
+	*lst = NULL;
 }

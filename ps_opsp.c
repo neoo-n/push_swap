@@ -6,7 +6,7 @@
 /*   By: dvauthey <dvauthey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 18:05:27 by dvauthey          #+#    #+#             */
-/*   Updated: 2024/11/20 11:43:19 by dvauthey         ###   ########.fr       */
+/*   Updated: 2024/11/20 16:24:37 by dvauthey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ void	fct_pab(t_dbllist **a, t_dbllist **b)
 	if (temp)
 		((*b)->next)->prev = *b;
 	index_right(a);
+	ft_printf("a : \n");
+	ft_putdbllst(*a);
 	index_right(b);
 }
 

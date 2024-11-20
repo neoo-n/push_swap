@@ -6,7 +6,7 @@
 /*   By: dvauthey <dvauthey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 17:57:25 by dvauthey          #+#    #+#             */
-/*   Updated: 2024/11/20 11:46:48 by dvauthey         ###   ########.fr       */
+/*   Updated: 2024/11/20 16:07:28 by dvauthey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,41 +22,61 @@ static int	is_ordered(t_dbllist *a)
 		return (0);
 }
 
-static void	threeorder(t_dbllist **lst, char *s)
+static void	threeorder(t_dbllist **a, t_dbllist **b, char *s)
 {
-	int	c[3];
+	t_dbllist *temp;
 
-	c[0] = (*lst)->number;
-	c[1] = (*lst)->next->number;
-	c[2] = (*lst)->next->next->number;
-	if (c[0] < c[1])
+	temp = *a;
+	if (!ft_strncmp(s, "b", 2))
+		temp = *b;
+	if (temp->number < temp->next->number)
 	{
-		if (c[1] > c[2])
+		if (temp->next->number > (temp->next->next)->number)
 		{
-			optocall("rr", s, lst, NULL);
-			if (c[0] < c[2])
-				optocall("s", s, lst, NULL);
+			optocall("rr", s, a, b);
+			if (temp->number < (temp->next->next)->number)
+				optocall("s", s, a, b);
 		}
 	}
 	else
 	{
-		if (c[0] < c[2])
-			optocall("s", s, lst, NULL);
+		if (temp->number < (temp->next->next)->number)
+			optocall("s", s, a, b);
 		else
 		{
-			optocall("r", s, lst, NULL);
-			if (c[1] > c[2])
-				optocall("s", s, lst, NULL);
+			optocall("r", s, a, b);
+			if (temp->next->number > (temp->next->next)->number)
+				optocall("s", s, a, b);
 		}
 	}
 }
 
 static void	ordering(t_dbllist **a, t_dbllist **b, int indexa)
 {
+	int	lena;
+	int	lenb;
 	int	indexb;
 
+	lena = ft_dbllstsize(*a);
+	lenb = ft_dbllstsize(*b);
 	indexb = placeinb(*b, *a, indexa);
-	
+	ft_printf("indexb : %i\n", indexb);
+	if (indexa != 0 && indexb != 0)
+		double_samerotating(a,  b, &indexa, &indexb);
+	if (indexa != 0 || indexa != lena)
+		simple_rotating(a, b, &indexa, "a");
+	if (indexb != 0 || indexb != lenb)
+		simple_rotating(a, b, &indexb, "b");
+	optocall("p", "b", a, b);
+	/*ft_printf("a : \n");
+	ft_putdbllst(*a);
+	ft_printf("b : \n");
+	ft_putdbllst(*b);
+	ft_printf("\n");*/
+	if (lenb == 3)
+		threeorder(a, b, "b");
+	else
+		rot_decrease(b);
 }
 
 static void	to_order(t_dbllist **a, t_dbllist **b)
@@ -69,9 +89,9 @@ static void	to_order(t_dbllist **a, t_dbllist **b)
 	while (ft_dbllstsize(*a) > 3)
 	{
 		ordering(a, b, indextoorder(*a, *b));
-		ft_printf("bruh\n");
+		ft_putdbllst(*a);
 	}
-	threeorder(a, "a");
+	threeorder(a, b, "a");
 }
 
 void	ft_push_swap(t_dbllist *a)
