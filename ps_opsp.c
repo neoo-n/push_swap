@@ -6,7 +6,7 @@
 /*   By: dvauthey <dvauthey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 18:05:27 by dvauthey          #+#    #+#             */
-/*   Updated: 2024/11/20 16:24:37 by dvauthey         ###   ########.fr       */
+/*   Updated: 2024/11/21 11:27:45 by dvauthey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,25 +50,28 @@ static void	index_right(t_dbllist **lst)
 
 void	fct_pab(t_dbllist **a, t_dbllist **b)
 {
-	t_dbllist	*temp;
+	t_dbllist	*tempa;
+	t_dbllist	*tempb;
 
 	if (!(*a))
 		return ;
-	temp = *b;
-	if (!temp)
-		*b = ft_dbllstnew((*a)->number);
-	else
-		*b = *a;
-	*a = (*a)->next;
+	tempa = ft_dbllstcpy(*a);
+	free(a);
+	tempb = ft_dbllstcpy(*b); 
+	free(b);
+	*b = ft_dbllstnew(tempa->number);
+	*a = ft_dbllstcpy(tempa->next);
 	if (!(*a))
 		(*a)->prev = NULL;
-	(*b)->next = temp;
-	if (temp)
+	(*b)->next = ft_dbllstcpy(tempb);
+	if (tempb)
 		((*b)->next)->prev = *b;
 	index_right(a);
 	ft_printf("a : \n");
 	ft_putdbllst(*a);
 	index_right(b);
+	ft_dbllstclear(&tempa);
+	ft_dbllstclear(&tempb);
 }
 
 void	optocall(char *op, char *letter, t_dbllist **a, t_dbllist **b)

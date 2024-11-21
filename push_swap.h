@@ -6,7 +6,7 @@
 /*   By: dvauthey <dvauthey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 17:56:47 by dvauthey          #+#    #+#             */
-/*   Updated: 2024/11/20 16:19:26 by dvauthey         ###   ########.fr       */
+/*   Updated: 2024/11/21 10:40:20 by dvauthey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,10 @@ void		optocall(char *op, char *letter, t_dbllist **a, t_dbllist **b);
 int			ft_dbllstsize(t_dbllist *lst);
 t_dbllist	*ft_dbllstnew(int content);
 void		ft_dbllstadd_back(t_dbllist **lst, t_dbllist *new);
-void		ft_putdbllst(t_dbllist *lst);
 t_dbllist	*ft_dbllstlast(t_dbllist *lst);
 void		ft_dbllstclear(t_dbllist **lst);
+void		ft_putdbllst(t_dbllist *lst);
+t_dbllist	*ft_dbllstcpy(t_dbllist *a);
 void		notvalid();
 void		isnumber(char *s);
 void		is_alreadyin(t_dbllist **a, int n);
