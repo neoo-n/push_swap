@@ -6,7 +6,7 @@
 /*   By: dvauthey <dvauthey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 18:05:27 by dvauthey          #+#    #+#             */
-/*   Updated: 2024/11/21 11:27:45 by dvauthey         ###   ########.fr       */
+/*   Updated: 2024/11/22 15:10:51 by dvauthey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,28 +50,19 @@ static void	index_right(t_dbllist **lst)
 
 void	fct_pab(t_dbllist **a, t_dbllist **b)
 {
-	t_dbllist	*tempa;
-	t_dbllist	*tempb;
+	t_dbllist	*temp;
 
-	if (!(*a))
-		return ;
-	tempa = ft_dbllstcpy(*a);
-	free(a);
-	tempb = ft_dbllstcpy(*b); 
-	free(b);
-	*b = ft_dbllstnew(tempa->number);
-	*a = ft_dbllstcpy(tempa->next);
-	if (!(*a))
-		(*a)->prev = NULL;
-	(*b)->next = ft_dbllstcpy(tempb);
-	if (tempb)
-		((*b)->next)->prev = *b;
+	temp = (*a)->next;
+	if (temp)
+		(*a)->next->prev = NULL;
+	(*a)->next = NULL;
+	ft_dbllstadd_back(b, *a);
+	if (ft_dbllstsize(*b) > 1)
+		fct_rrab(b);
+	*a = temp;	
 	index_right(a);
-	ft_printf("a : \n");
-	ft_putdbllst(*a);
-	index_right(b);
-	ft_dbllstclear(&tempa);
-	ft_dbllstclear(&tempb);
+	if (a)
+		ft_printf("help\n");
 }
 
 void	optocall(char *op, char *letter, t_dbllist **a, t_dbllist **b)

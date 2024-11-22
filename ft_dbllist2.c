@@ -25,18 +25,3 @@ void	ft_putdbllst(t_dbllist *lst)
 		temp = temp->next;
 	}
 }
-
-t_dbllist	*ft_dbllstcpy(t_dbllist *a)
-{
-	t_dbllist	*el;
-	t_dbllist	*temp;
-
-	while (a)
-	{
-		ft_printf()
-		el = ft_dbllstnew(a->number);
-		ft_dbllstadd_back(&temp, el);
-		a = a->next;
-	}
-	return (temp);
-}
