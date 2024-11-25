@@ -6,7 +6,7 @@
 /*   By: dvauthey <dvauthey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 18:05:27 by dvauthey          #+#    #+#             */
-/*   Updated: 2024/11/22 15:10:51 by dvauthey         ###   ########.fr       */
+/*   Updated: 2024/11/25 11:45:44 by dvauthey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,6 @@ void	fct_pab(t_dbllist **a, t_dbllist **b)
 		fct_rrab(b);
 	*a = temp;	
 	index_right(a);
-	if (a)
-		ft_printf("help\n");
 }
 
 void	optocall(char *op, char *letter, t_dbllist **a, t_dbllist **b)
@@ -89,5 +87,5 @@ void	optocall(char *op, char *letter, t_dbllist **a, t_dbllist **b)
 		fct_rab(a);
 	else if (!ft_strncmp(op, "r", 2) && !ft_strncmp(letter, "b", 2))
 		fct_rab(b);
-	ft_printf("%s%s\n", op, letter);
+//	ft_printf("%s%s\n", op, letter);
 }

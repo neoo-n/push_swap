@@ -2,7 +2,7 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 SRC = push_swap.c ps_opsp.c ps_opr.c main.c ft_dbllist.c\
 		ft_dbllist2.c lst_create.c lst_check.c count_op.c\
-		op_rotation.c final_order.c
+		op_rotation.c final_order.c threeorder.c threeorderdec.c
 #OBJDIR = obj
 OBJ = ${SRC:.c=.o}
 NAME = push_swap

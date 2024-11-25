@@ -6,7 +6,7 @@
 /*   By: dvauthey <dvauthey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 17:56:47 by dvauthey          #+#    #+#             */
-/*   Updated: 2024/11/22 14:57:32 by dvauthey         ###   ########.fr       */
+/*   Updated: 2024/11/25 11:39:48 by dvauthey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,15 @@ void		ft_dbllstadd_back(t_dbllist **lst, t_dbllist *new);
 t_dbllist	*ft_dbllstlast(t_dbllist *lst);
 void		ft_dbllstclear(t_dbllist **lst);
 void		ft_putdbllst(t_dbllist *lst);
+void		ft_dbllstcpy(t_dbllist *lst, t_dbllist **temp);
 void		notvalid();
 void		isnumber(char *s);
 void		is_alreadyin(t_dbllist **a, int n);
 t_dbllist	*check_arg2(char *av, t_dbllist **a);
 void		check_argm2(int len, char **argv, t_dbllist **a);
 int			placeinb(t_dbllist *b, t_dbllist *a, int i);
+void		threeorder(t_dbllist **a, t_dbllist **b, char *s);
+void		threeorderdec(t_dbllist **a, t_dbllist **b, char *s);
 int			indextoorder(t_dbllist *a, t_dbllist *b);
 void		simple_rotating(t_dbllist **a, t_dbllist **b, int *indexl, char *s);
 void		rot_decrease(t_dbllist **b);

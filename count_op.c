@@ -6,7 +6,7 @@
 /*   By: dvauthey <dvauthey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 14:34:35 by dvauthey          #+#    #+#             */
-/*   Updated: 2024/11/21 10:45:07 by dvauthey         ###   ########.fr       */
+/*   Updated: 2024/11/25 11:48:29 by dvauthey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,10 +75,13 @@ int	indextoorder(t_dbllist *a, t_dbllist *b)
 
 	indexright = 0;
 	nb = count_op(a, b, a->index);
+	ft_printf("\ncount : %i\n", count_op(a, b, a->index));
 	temp = a;
+	ft_putdbllst(temp);
 	while (temp->next)
 	{
 		temp = temp->next;
+		ft_printf("count : %i\n", count_op(a, b, temp->index));
 		if (count_op(a, b, temp->index) < nb)
 		{
 			nb = count_op(a, b, temp->index);

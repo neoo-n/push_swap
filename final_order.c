@@ -6,7 +6,7 @@
 /*   By: dvauthey <dvauthey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 14:18:03 by dvauthey          #+#    #+#             */
-/*   Updated: 2024/11/22 15:09:19 by dvauthey         ###   ########.fr       */
+/*   Updated: 2024/11/25 11:59:29 by dvauthey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,8 @@
 
 static int	is_smallest(t_dbllist *a, int n)
 {
-	while (a->next)
+	while (a)
 	{
-		ft_printf("lllllllllll\n");
 		if (a->number < n)
 			return (0);
 		a = a->next;
@@ -24,23 +23,49 @@ static int	is_smallest(t_dbllist *a, int n)
 	return (1);
 }
 
+static void	not_smallest(t_dbllist **a, t_dbllist **b)
+{
+	while (!is_smallest(*a, (*b)->number))
+	{
+		ft_printf("bibi phoque encore\n");
+		while ((*b)->number > ft_dbllstlast(*a)->number)
+		{
+			optocall("p", "a", a, b);
+			ft_putdbllst(*a);
+			ft_printf("-----------------------------------\n");
+			ft_putdbllst(*b);
+		}
+		if (!(*b) || !is_smallest(*a, (*b)->number))
+			return ;
+		while (ft_dbllstlast(*a)->number > (*b)->number)
+		{
+			optocall("rr", "a", a, b);
+			if (!(*b))
+				break ;
+		}
+		if (!(*b))
+			return ;
+	}
+}
+
 void	bona(t_dbllist **a, t_dbllist **b)
 {
-	ft_printf("is_smallest : %i\n", is_smallest(*a, (*b)->number));
-	ft_printf("a : %i, b : %i\n", (*a)->number, (*b)->number);
-	while (b && !is_smallest(*a, (*b)->number))
+	while (*b)
 	{
-		ft_printf("hiiii\n");
-		while (b && (*b)->number > ft_dbllstlast(*a)->number)
+		not_smallest(a, b);
+		if (!(*b))
+		{
+			while (ft_dbllstlast(*a)->number < (*a)->number)
+				optocall("rr", "a", a, b);
+			break ;
+		}
+		if (!(*b))
+			break ;
+		while (is_smallest(*a, (*b)->number))
+		{
 			optocall("p", "a", a, b);
-		while (ft_dbllstlast(*a)->number > (*b)->number)
-			optocall("rr", "a", a, b);
-	}
-	while (b && is_smallest(*a, (*b)->number))
-	{
-		ft_printf("jjjjjjj\n");
-		optocall("p", "a", a, b);
-		if (b)
-			ft_printf("grr\n");
+			if (!(*b))
+				break ;
+		}
 	}
 }
