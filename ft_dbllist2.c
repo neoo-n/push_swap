@@ -6,7 +6,7 @@
 /*   By: dvauthey <dvauthey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 10:26:10 by dvauthey          #+#    #+#             */
-/*   Updated: 2024/11/25 10:42:01 by dvauthey         ###   ########.fr       */
+/*   Updated: 2024/11/25 17:32:06 by dvauthey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 void	ft_putdbllst(t_dbllist *lst)
 {
 	if (!lst)
-		ft_printf("NULL");
+		ft_printf("NULL\n");
 	while (lst)
 	{
-		ft_printf("%i\n", lst->number);
+		ft_printf("%i : %i\n",lst->index, lst->number);
 		lst = lst->next;
 	}
 }

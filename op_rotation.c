@@ -6,7 +6,7 @@
 /*   By: dvauthey <dvauthey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 11:45:33 by dvauthey          #+#    #+#             */
-/*   Updated: 2024/11/25 11:49:32 by dvauthey         ###   ########.fr       */
+/*   Updated: 2024/11/25 13:49:56 by dvauthey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	rot_decrease(t_dbllist **b)
 	biggest = (*b)->number;
 	index_biggest = 0;
 	temp = *b;
-	while (temp->next)
+	while (temp)
 	{
 		if (biggest < temp->number)
 		{

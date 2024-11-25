@@ -6,7 +6,7 @@
 /*   By: dvauthey <dvauthey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 17:59:18 by dvauthey          #+#    #+#             */
-/*   Updated: 2024/11/25 11:45:30 by dvauthey         ###   ########.fr       */
+/*   Updated: 2024/11/25 13:42:47 by dvauthey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ int	main(int argc, char **argv)
 	if (argc < 2)
 		return (0);
 	check_argm2(argc - 1, argv, &a);
-	ft_putdbllst(a);
 	ft_push_swap(a);
 	return (0);
 }

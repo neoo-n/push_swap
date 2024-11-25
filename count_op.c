@@ -6,7 +6,7 @@
 /*   By: dvauthey <dvauthey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 14:34:35 by dvauthey          #+#    #+#             */
-/*   Updated: 2024/11/25 11:48:29 by dvauthey         ###   ########.fr       */
+/*   Updated: 2024/11/25 17:51:09 by dvauthey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,27 +22,23 @@ static int	count_rot(int len, int i)
 
 int	placeinb(t_dbllist *b, t_dbllist *a, int i)
 {
-	int	right_index;
 	int	n;
 
 	if (!b)
 		return (0);
-	right_index = 0;
 	while (a->index != i)
 		a = a->next;
 	n = a->number;
+	ft_printf("n in placeinb : %i\n", n);
 	if (n < (ft_dbllstlast(b))->number)
 		return (ft_dbllstsize(b));
 	while (b)
 	{
 		if (n > b->number)
-		{
-			right_index = b->index;
-			break ;
-		}
+			return (b->index);
 		b = b->next;
 	}
-	return (right_index);
+	return (0);
 }
 
 static int	count_op(t_dbllist *a, t_dbllist *b, int indexa)
@@ -75,18 +71,19 @@ int	indextoorder(t_dbllist *a, t_dbllist *b)
 
 	indexright = 0;
 	nb = count_op(a, b, a->index);
-	ft_printf("\ncount : %i\n", count_op(a, b, a->index));
-	temp = a;
+	temp = NULL;
+	ft_dbllstcpy(a, &temp);
 	ft_putdbllst(temp);
-	while (temp->next)
+	while (temp)
 	{
-		temp = temp->next;
-		ft_printf("count : %i\n", count_op(a, b, temp->index));
 		if (count_op(a, b, temp->index) < nb)
 		{
 			nb = count_op(a, b, temp->index);
 			indexright = temp->index;
 		}
+		temp = temp->next;
 	}
+	ft_printf("idk\n");
+	ft_dbllstclear(&temp);
 	return (indexright);
 }
