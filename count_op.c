@@ -6,7 +6,7 @@
 /*   By: dvauthey <dvauthey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 14:34:35 by dvauthey          #+#    #+#             */
-/*   Updated: 2024/11/26 11:33:36 by dvauthey         ###   ########.fr       */
+/*   Updated: 2024/11/26 16:12:29 by dvauthey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,24 +22,30 @@ static int	count_rot(int len, int i)
 
 int	placeinb(t_dbllist *b, t_dbllist *a, int i)
 {
-	int	n;
+	int			indexb;
+	int			n;
+	t_dbllist	*temp;
 
 	if (!b)
 		return (0);
+	indexb = 0;
+	temp = NULL;
+	ft_dbllstcpy(b, &temp);
 	while (a->index != i)
 		a = a->next;
 	n = a->number;
-	if (n < (ft_dbllstlast(b))->number)
-		return (ft_dbllstsize(b));
-	if (n > b->number)
-		return (0);
-	b = b->next;
-	while (b)
+	temp = temp->next;
+	while (temp != NULL)
 	{
-		if (n > b->number && n < b->prev->number)
-			return (b->index);
-		b = b->next;
+		if (n > temp->number && n < temp->prev->number)
+			return (temp->index);
+		temp = temp->next;
 	}
+	if (which_biggest(b, n, &indexb))
+		return (indexb);
+	else if (which_smallest(b, n, &indexb))
+		return (indexb);
+	ft_dbllstclear(&temp);
 	return (0);
 }
 

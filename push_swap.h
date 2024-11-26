@@ -6,7 +6,7 @@
 /*   By: dvauthey <dvauthey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 17:56:47 by dvauthey          #+#    #+#             */
-/*   Updated: 2024/11/25 11:39:48 by dvauthey         ###   ########.fr       */
+/*   Updated: 2024/11/26 14:40:00 by dvauthey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ void		isnumber(char *s);
 void		is_alreadyin(t_dbllist **a, int n);
 t_dbllist	*check_arg2(char *av, t_dbllist **a);
 void		check_argm2(int len, char **argv, t_dbllist **a);
+int			which_smallest(t_dbllist *b, int n, int *indexb);	
+int			which_biggest(t_dbllist *b, int n, int *indexb);
 int			placeinb(t_dbllist *b, t_dbllist *a, int i);
 void		threeorder(t_dbllist **a, t_dbllist **b, char *s);
 void		threeorderdec(t_dbllist **a, t_dbllist **b, char *s);
