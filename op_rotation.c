@@ -6,7 +6,7 @@
 /*   By: dvauthey <dvauthey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 11:45:33 by dvauthey          #+#    #+#             */
-/*   Updated: 2024/11/25 13:49:56 by dvauthey         ###   ########.fr       */
+/*   Updated: 2024/11/26 10:34:08 by dvauthey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void	double_samerotating(t_dbllist **a, t_dbllist **b, int *indexa, int *indexb)
 	{
 		while (*indexb != 0 && *indexa != 0)
 		{
-			optocall("rr", NULL, a, b);
+			optocall("rr", "", a, b);
 			(*indexb)--;
 			(*indexa)--;
 		}
@@ -88,7 +88,7 @@ void	double_samerotating(t_dbllist **a, t_dbllist **b, int *indexa, int *indexb)
 	{
 		while (ft_dbllstsize(*b) - *indexb > 0 && ft_dbllstsize(*a) - *indexa > 0)
 		{
-			optocall("rrr", NULL, a, b);
+			optocall("rrr", "", a, b);
 			(*indexb)++;
 			(*indexa)++;
 		}

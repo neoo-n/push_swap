@@ -6,7 +6,7 @@
 /*   By: dvauthey <dvauthey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 18:05:27 by dvauthey          #+#    #+#             */
-/*   Updated: 2024/11/25 13:35:24 by dvauthey         ###   ########.fr       */
+/*   Updated: 2024/11/26 10:33:56 by dvauthey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ static void	index_right(t_dbllist **lst)
 		i++;
 		*lst = (*lst)->next;
 	}
+	(*lst)->index = i;
 	while ((*lst)->prev)
 		*lst = (*lst)->prev;
 }
