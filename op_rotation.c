@@ -6,7 +6,7 @@
 /*   By: dvauthey <dvauthey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 11:45:33 by dvauthey          #+#    #+#             */
-/*   Updated: 2024/11/26 10:34:08 by dvauthey         ###   ########.fr       */
+/*   Updated: 2024/11/27 15:39:43 by dvauthey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,9 @@ void	rot_decrease(t_dbllist **b)
 	int			biggest;
 	int			index_biggest;
 	t_dbllist	*temp;
-	
+
+	if (!(*b))
+		return ;
 	biggest = (*b)->number;
 	index_biggest = 0;
 	temp = *b;
@@ -56,26 +58,30 @@ void	rot_decrease(t_dbllist **b)
 		}
 		temp = temp->next;
 	}
-	simple_rotating(NULL, b, &index_biggest, "b");	
+	simple_rotating(NULL, b, &index_biggest, "b");
 }
 
-static void	double_diffrotating(t_dbllist **a, t_dbllist **b, int *indexa, int *indexb)
+static void	double_diffrotating(t_dbllist **a, t_dbllist **b,
+	int *indexa, int *indexb)
 {
 	if ((*indexb <= ft_dbllstsize(*b) / 2) && (*indexa > ft_dbllstsize(*a) / 2))
 	{
 		simple_rotating(a, b, indexb, "b");
 		simple_rotating(a, b, indexa, "a");
 	}
-	else if ((*indexb > ft_dbllstsize(*b) / 2) && (*indexa <= ft_dbllstsize(*a) / 2))
+	else if ((*indexb > ft_dbllstsize(*b) / 2)
+		&& (*indexa <= ft_dbllstsize(*a) / 2))
 	{
 		simple_rotating(a, b, indexb, "b");
-		simple_rotating(a, b, indexa, "a");	
+		simple_rotating(a, b, indexa, "a");
 	}
 }
 
-void	double_samerotating(t_dbllist **a, t_dbllist **b, int *indexa, int *indexb)
+void	double_samerotating(t_dbllist **a, t_dbllist **b,
+	int *indexa, int *indexb)
 {
-	if ((*indexb <= ft_dbllstsize(*b) / 2) && (*indexa <= ft_dbllstsize(*a) / 2)) 
+	if ((*indexb <= ft_dbllstsize(*b) / 2)
+		&& (*indexa <= ft_dbllstsize(*a) / 2))
 	{
 		while (*indexb != 0 && *indexa != 0)
 		{
@@ -84,9 +90,11 @@ void	double_samerotating(t_dbllist **a, t_dbllist **b, int *indexa, int *indexb)
 			(*indexa)--;
 		}
 	}
-	else if ((*indexb > ft_dbllstsize(*b) / 2) && (*indexa > ft_dbllstsize(*a) / 2))
+	else if ((*indexb > ft_dbllstsize(*b) / 2)
+		&& (*indexa > ft_dbllstsize(*a) / 2))
 	{
-		while (ft_dbllstsize(*b) - *indexb > 0 && ft_dbllstsize(*a) - *indexa > 0)
+		while (ft_dbllstsize(*b) - *indexb > 0
+			&& ft_dbllstsize(*a) - *indexa > 0)
 		{
 			optocall("rrr", "", a, b);
 			(*indexb)++;

@@ -6,7 +6,7 @@
 /*   By: dvauthey <dvauthey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 10:16:53 by dvauthey          #+#    #+#             */
-/*   Updated: 2024/11/25 11:30:57 by dvauthey         ###   ########.fr       */
+/*   Updated: 2024/11/27 15:42:31 by dvauthey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void	secondcase(t_dbllist *temp, t_dbllist **a, t_dbllist **b, char *s)
 
 void	threeorder(t_dbllist **a, t_dbllist **b, char *s)
 {
-	t_dbllist *temp;
+	t_dbllist	*temp;
 
 	temp = NULL;
 	if (!ft_strncmp(s, "a", 2))

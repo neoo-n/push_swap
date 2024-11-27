@@ -6,7 +6,7 @@
 /*   By: dvauthey <dvauthey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 18:05:27 by dvauthey          #+#    #+#             */
-/*   Updated: 2024/11/26 10:33:56 by dvauthey         ###   ########.fr       */
+/*   Updated: 2024/11/27 15:40:26 by dvauthey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	fct_pab(t_dbllist **a, t_dbllist **b)
 	ft_dbllstadd_back(b, *a);
 	if (ft_dbllstsize(*b) > 1)
 		fct_rrab(b);
-	*a = temp;	
+	*a = temp;
 	index_right(a);
 }
 
@@ -88,5 +88,7 @@ void	optocall(char *op, char *letter, t_dbllist **a, t_dbllist **b)
 		fct_rab(a);
 	else if (!ft_strncmp(op, "r", 2) && !ft_strncmp(letter, "b", 2))
 		fct_rab(b);
-	ft_printf("%s%s\n", op, letter);
+	write(1, op, ft_strlen(op));
+	write(1, letter, ft_strlen(letter));
+	write(1, "\n", 1);
 }

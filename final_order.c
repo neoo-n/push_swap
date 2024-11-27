@@ -6,7 +6,7 @@
 /*   By: dvauthey <dvauthey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 14:18:03 by dvauthey          #+#    #+#             */
-/*   Updated: 2024/11/25 13:55:52 by dvauthey         ###   ########.fr       */
+/*   Updated: 2024/11/27 15:42:15 by dvauthey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,10 @@ static void	not_smallest(t_dbllist **a, t_dbllist **b)
 			if (!(*b))
 				return ;
 		}
-		while (ft_dbllstlast(*a)->number > (*b)->number &&
-			!is_smallest(*a, (*b)->number))
+		while (ft_dbllstlast(*a)->number > (*b)->number
+			&& !is_smallest(*a, (*b)->number))
 		{
-			if (ft_dbllstsize(*a) == 3)
+			if (ft_dbllstsize(*a) == 3 && (*b)->number < (*a)->next->number)
 				optocall("r", "a", a, b);
 			else
 				optocall("rr", "a", a, b);

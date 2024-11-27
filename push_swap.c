@@ -6,7 +6,7 @@
 /*   By: dvauthey <dvauthey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 17:57:25 by dvauthey          #+#    #+#             */
-/*   Updated: 2024/11/26 16:13:05 by dvauthey         ###   ########.fr       */
+/*   Updated: 2024/11/27 15:41:40 by dvauthey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	ordering(t_dbllist **a, t_dbllist **b, int indexa)
 	lenb = ft_dbllstsize(*b);
 	indexb = placeinb(*b, *a, indexa);
 	if (indexa != 0 && indexb != 0)
-		double_samerotating(a,  b, &indexa, &indexb);
+		double_samerotating(a, b, &indexa, &indexb);
 	if (indexa != 0 && indexa != lena)
 		simple_rotating(a, b, &indexa, "a");
 	if (indexb != 0 && indexb != lenb)
@@ -54,6 +54,8 @@ static void	to_order(t_dbllist **a, t_dbllist **b)
 	else
 		rot_decrease(b);
 	threeorder(a, b, "a");
+	if (!b)
+		return ;
 	bona(a, b);
 }
 
@@ -63,8 +65,13 @@ void	ft_push_swap(t_dbllist *a)
 
 	b = NULL;
 	if (is_ordered(a))
+	{
+		ft_dbllstclear(&a);
 		exit(EXIT_SUCCESS);
+	}
 	to_order(&a, &b);
-//	ft_putdbllst(a);
-	return ;	
+	if (b)
+		ft_dbllstclear(&b);
+	ft_dbllstclear(&a);
+	return ;
 }

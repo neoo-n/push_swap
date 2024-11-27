@@ -6,7 +6,7 @@
 /*   By: dvauthey <dvauthey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 11:31:19 by dvauthey          #+#    #+#             */
-/*   Updated: 2024/11/25 11:38:55 by dvauthey         ###   ########.fr       */
+/*   Updated: 2024/11/27 15:43:01 by dvauthey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ static void	firstcasedec(t_dbllist *temp, t_dbllist **a, t_dbllist **b, char *s)
 	}	
 }
 
-static void	secondcasedec(t_dbllist *temp, t_dbllist **a, t_dbllist **b, char *s)
+static void	secondcasedec(t_dbllist *temp, t_dbllist **a,
+	t_dbllist **b, char *s)
 {
 	if (temp->number < (temp->next->next)->number)
 	{
@@ -36,7 +37,7 @@ static void	secondcasedec(t_dbllist *temp, t_dbllist **a, t_dbllist **b, char *s
 
 void	threeorderdec(t_dbllist **a, t_dbllist **b, char *s)
 {
-	t_dbllist *temp;
+	t_dbllist	*temp;
 
 	temp = NULL;
 	if (!ft_strncmp(s, "a", 2))

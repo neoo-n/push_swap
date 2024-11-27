@@ -6,19 +6,20 @@
 /*   By: dvauthey <dvauthey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 11:35:00 by dvauthey          #+#    #+#             */
-/*   Updated: 2024/11/20 10:33:49 by dvauthey         ###   ########.fr       */
+/*   Updated: 2024/11/27 15:33:37 by dvauthey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	notvalid()
+void	notvalid(t_dbllist **a)
 {
 	ft_putendl_fd("Error", 2);
+	ft_dbllstclear(a);
 	exit(EXIT_FAILURE);
 }
 
-static void	is_minmax(char *s)
+static int	is_minmax(char *s)
 {
 	int	len;
 
@@ -26,44 +27,48 @@ static void	is_minmax(char *s)
 	if (s[0] == '-')
 	{
 		if (len > 11 || (len == 11 && ft_strncmp(s, "-2147483648", 11) > 0))
-			notvalid();
+			return (0);
 	}
 	else
 	{
 		if (len > 10 || (len == 10 && ft_strncmp(s, "2147483647", 10) > 0))
-			notvalid();
+			return (0);
 	}
+	return (1);
 }
 
-void	isnumber(char *s)
+int	isnumber(char *s)
 {
 	int		i;
 
 	i = 0;
 	if (!s || s[0] == '\0')
-		notvalid();
+		return (0);
 	if (s[0] == '-' || s[0] == '+')
 		i++;
 	while (s[i])
 	{
 		if (!ft_isdigit(s[i]))
-			notvalid();
+			return (0);
 		i++;
 	}
-	is_minmax(s);	
+	if (!is_minmax(s))
+		return (0);
+	return (1);
 }
 
-void	is_alreadyin(t_dbllist **a, int n)
+int	is_alreadyin(t_dbllist **a, int n)
 {
 	t_dbllist	*temp;
 
 	temp = *a;
 	if (!(*a))
-		return ;
+		return (0);
 	while (temp)
 	{
 		if (temp->number == n)
-			notvalid();
+			return (1);
 		temp = temp->next;
 	}
+	return (0);
 }
